@@ -218,7 +218,7 @@ static inline int get_int(char **bpp, int *anint)
 {
 	char buf[50];
 	char *ep;
-	int rv;
+	int rv = 0;
 	int len = qword_get(bpp, buf, 50);
 	if (len < 0) return -EINVAL;
 	if (len ==0) return -ENOENT;
@@ -249,7 +249,7 @@ static inline time_t convert_to_wallclock(time_t sinceboot)
 
 static inline time_t get_expiry(char **bpp)
 {
-	int rv;
+	int rv = 0;
 	struct timespec boot;
 
 	if (get_int(bpp, &rv))
